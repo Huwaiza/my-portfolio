@@ -16,20 +16,10 @@
   gap: 8px;
   z-index: 999;
   padding: 10px;
+  color: var(--text-secondary);
 }
 .social-icons:hover {
   transition: 0.3s;
-  color: var(--backgroundColor);
-}
-.social-icons a:hover {
-  color: var(--backgroundColor);
-  /* transform: scale(1.2); */
-}
-.social-icons span {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
 }
 .social-icons a {
   --siLeft: 50%;
@@ -40,8 +30,19 @@
   transform: translate(-50%, -50%);
   display: flex;
   font-size: 23px;
+  color: var(--text-secondary);
   will-change: left, top;
-  transition: transform 0.3s ease-out;
+  transition: color 0.2s, transform 0.3s ease-out;
+}
+.social-icons a:hover {
+  color: var(--text-primary);
+  opacity: 1;
+}
+.social-icons span {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
 }
 .resume-button {
   position: absolute;
@@ -56,17 +57,18 @@
   font-size: 15px;
   line-height: 15px;
   font-weight: 600;
-  color: #5e5e5e;
+  color: var(--text-label);
   cursor: pointer;
-  transition: 0.5s;
+  transition: color 0.2s;
   transform-origin: left bottom;
   transform: translateX(100%) rotateZ(-90deg);
 }
 .resume-button:hover {
-  color: #fff;
+  color: var(--text-primary);
+  opacity: 1;
 }
 div.resume-button span {
-  color: #fff;
+  color: var(--text-secondary);
   font-size: 17px;
   margin-top: -1px;
   display: flex;

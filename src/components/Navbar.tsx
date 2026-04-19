@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -9,6 +9,10 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
 const Navbar = () => {
+  const [isDark, setIsDark] = useState(
+    !document.documentElement.classList.contains("light")
+  );
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -39,42 +43,60 @@ const Navbar = () => {
       ScrollSmoother.refresh(true);
     });
   }, []);
-  return (
-    <>
-      <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
-        </a>
-        <a
-          href="mailto:example@mail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          example@mail.com
-        </a>
-        <ul>
-          <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
-        </ul>
-      </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
-    </>
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    if (html.classList.contains("light")) {
+      html.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+      setIsDark(true);
+    } else {
+      html.classList.add("light");
+      localStorage.setItem("theme", "light");
+      setIsDark(false);
+    }
+  };
+
+  return (
+    <div className="header">
+      <a href="/#" className="navbar-title" data-cursor="disable">
+        HT
+      </a>
+      <a
+        href="mailto:muhammadhuwaizatahir@gmail.com"
+        className="navbar-connect"
+        data-cursor="disable"
+      >
+        muhammadhuwaizatahir@gmail.com
+      </a>
+      <ul>
+        <li>
+          <a data-href="#about" href="#about">
+            <HoverLinks text="ABOUT" />
+          </a>
+        </li>
+        <li>
+          <a data-href="#work" href="#work">
+            <HoverLinks text="WORK" />
+          </a>
+        </li>
+        <li>
+          <a data-href="#contact" href="#contact">
+            <HoverLinks text="CONTACT" />
+          </a>
+        </li>
+        <li>
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            data-cursor="disable"
+            aria-label="Toggle theme"
+          >
+            {isDark ? "☀" : "☾"}
+          </button>
+        </li>
+      </ul>
+    </div>
   );
 };
 

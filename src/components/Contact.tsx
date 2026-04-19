@@ -1,71 +1,49 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 import "./styles/Contact.css";
 
 const Contact = () => {
   return (
-    <div className="contact-section section-container" id="contact">
-      <div className="contact-container">
-        <h3>Contact</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Email</h4>
-            <p>
-              <a href="mailto:example@mail.com" data-cursor="disable">
-                example@mail.com
+    <div className="contact-section" id="contact">
+      <div className="contact-container section-container">
+        <h2 className="contact-heading">Let's talk.</h2>
+        <div className="contact-grid">
+          <div>
+            <div className="contact-item">
+              <span className="contact-item-label">EMAIL</span>
+              <a href="mailto:muhammadhuwaizatahir@gmail.com" data-cursor="disable">
+                muhammadhuwaizatahir@gmail.com
               </a>
-            </p>
-            <h4>Phone</h4>
-            <p>
-              <a href="tel:+9199999999" data-cursor="disable">
-                +91 99999 99999
+            </div>
+            <div className="contact-item">
+              <span className="contact-item-label">LINKEDIN</span>
+              <a href="https://www.linkedin.com/in/huwaiza-tahir-80092a147/" target="_blank" data-cursor="disable">
+                huwaiza-tahir
               </a>
-            </p>
+            </div>
           </div>
-          <div className="contact-box">
-            <h4>Social</h4>
-            <a
-              href="https://github.com"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.linkedin.com"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
-            </a>
-            <a
-              href="https://x.com"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Twitter <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
-          </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span>Moncy Yohannan</span>
-            </h2>
-            <h5>
-              <MdCopyright /> 2024
-            </h5>
+          <div>
+            <span className="contact-item-label" style={{ display: "block", marginBottom: "16px" }}>SOCIAL</span>
+            <div className="contact-links">
+              <a href="https://github.com/Huwaiza" target="_blank" data-cursor="disable" className="contact-link">
+                <span>Github</span>
+                <MdArrowOutward />
+              </a>
+              <a href="https://www.linkedin.com/in/huwaiza-tahir-80092a147/" target="_blank" data-cursor="disable" className="contact-link">
+                <span>LinkedIn</span>
+                <MdArrowOutward />
+              </a>
+              <a href="https://medium.com/@muhammadhuwaizatahir" target="_blank" data-cursor="disable" className="contact-link">
+                <span>Medium</span>
+                <MdArrowOutward />
+              </a>
+            </div>
           </div>
         </div>
       </div>
+      <footer className="site-footer section-container">
+        <span>HUWAIZA TAHIR © 2025</span>
+        <span>BACKEND · CLOUD · AI</span>
+      </footer>
     </div>
   );
 };

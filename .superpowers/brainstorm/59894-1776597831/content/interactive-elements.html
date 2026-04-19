@@ -1,0 +1,47 @@
+<h2>Which interactive elements should stay?</h2>
+<p class="subtitle">Current site has several heavy interactive pieces. For a minimal, professional look — keep or cut?</p>
+
+<div class="options" data-multiselect>
+  <div class="option" data-choice="character" onclick="toggleSelect(this)">
+    <div class="letter">?</div>
+    <div class="content">
+      <h3>3D Character Model</h3>
+      <p>The cartoon guy that tracks your mouse. Currently the centerpiece of the hero. Heavy (loads a GLTF model), looks unprofessional, takes up half the screen.</p>
+      <p style="color:#e05555;font-size:12px;margin-top:6px;">Recommendation: REMOVE</p>
+    </div>
+  </div>
+  <div class="option" data-choice="techballs" onclick="toggleSelect(this)">
+    <div class="letter">?</div>
+    <div class="content">
+      <h3>3D Physics Tech Balls</h3>
+      <p>The floating spheres with tech logos you can bat around with your mouse. Fun but heavy (Three.js + Rapier physics). Could replace images with your actual stack.</p>
+      <p style="color:#e0a955;font-size:12px;margin-top:6px;">Recommendation: KEEP (but update logos)</p>
+    </div>
+  </div>
+  <div class="option" data-choice="cursor" onclick="toggleSelect(this)">
+    <div class="letter">?</div>
+    <div class="content">
+      <h3>Custom Cursor</h3>
+      <p>The purple glowing circle that replaces your cursor. Subtle, doesn't hurt performance. Adds a touch of personality without being loud.</p>
+      <p style="color:#55e08a;font-size:12px;margin-top:6px;">Recommendation: KEEP</p>
+    </div>
+  </div>
+  <div class="option" data-choice="scrollsmoother" onclick="toggleSelect(this)">
+    <div class="letter">?</div>
+    <div class="content">
+      <h3>Smooth Scroll (GSAP ScrollSmoother)</h3>
+      <p>The buttery smooth scrolling effect across the whole page. Subtle but noticeable — makes the site feel polished and high-end.</p>
+      <p style="color:#55e08a;font-size:12px;margin-top:6px;">Recommendation: KEEP</p>
+    </div>
+  </div>
+  <div class="option" data-choice="horizontalwork" onclick="toggleSelect(this)">
+    <div class="letter">?</div>
+    <div class="content">
+      <h3>Horizontal Scroll Work Section</h3>
+      <p>Projects scroll horizontally as you scroll down. Visually interesting, works well for showcasing multiple projects. Keeps the page from feeling like a wall of text.</p>
+      <p style="color:#55e08a;font-size:12px;margin-top:6px;">Recommendation: KEEP</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px;">Select the ones you want to <strong>keep</strong>. Unselected = removed.</p>

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
@@ -11,18 +11,44 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+  "/images/python.webp",
+  "/images/django.webp",
+  "/images/redis.webp",
+  "/images/aws.webp",
+  "/images/azure.webp",
+  "/images/neo4j.webp",
+  "/images/docker.webp",
+  "/images/react-new.webp",
+  "/images/postgresql.webp",
+  "/images/elasticsearch.webp",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function makeLogoTexture(url: string): THREE.CanvasTexture {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#111111";
+  ctx.fillRect(0, 0, size, size);
+  const tex = new THREE.CanvasTexture(canvas);
+  const img = new Image();
+  img.onload = () => {
+    ctx.clearRect(0, 0, size, size);
+    ctx.fillStyle = "#111111";
+    ctx.fillRect(0, 0, size, size);
+    const logoSize = size * 0.55;
+    const offset = (size - logoSize) / 2;
+    ctx.globalAlpha = 0.9;
+    ctx.drawImage(img, offset, offset, logoSize, logoSize);
+    tex.needsUpdate = true;
+  };
+  img.src = url;
+  return tex;
+}
+
+const textures = imageUrls.map((url) => makeLogoTexture(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
@@ -35,7 +61,6 @@ type SphereProps = {
   scale: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
   material: THREE.MeshPhysicalMaterial;
-  isActive: boolean;
 };
 
 function SphereGeo({
@@ -43,12 +68,10 @@ function SphereGeo({
   scale,
   r = THREE.MathUtils.randFloatSpread,
   material,
-  isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
       .copy(api.current!.translation())
@@ -60,7 +83,6 @@ function SphereGeo({
           -50 * delta * scale
         )
       );
-
     api.current?.applyImpulse(impulse, true);
   });
 
@@ -69,7 +91,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(20), r(20) - 25, r(20) - 10]}
+      position={[r(20), r(20), r(20) - 10]}
       ref={api}
       colliders={false}
     >
@@ -91,16 +113,10 @@ function SphereGeo({
   );
 }
 
-type PointerProps = {
-  vec?: THREE.Vector3;
-  isActive: boolean;
-};
-
-function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
+function Pointer({ vec = new THREE.Vector3() }) {
   const ref = useRef<RapierRigidBody>(null);
 
   useFrame(({ pointer, viewport }) => {
-    if (!isActive) return;
     const targetVec = vec.lerp(
       new THREE.Vector3(
         (pointer.x * viewport.width) / 2,
@@ -125,54 +141,25 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 }
 
 const TechStack = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
-    };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
         new THREE.MeshPhysicalMaterial({
           map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
+          metalness: 0.2,
+          roughness: 0.85,
+          clearcoat: 0.05,
         })
     );
   }, []);
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2>TECH STACK</h2>
 
       <Canvas
         shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        gl={{ alpha: true, stencil: false, antialias: false }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
@@ -188,13 +175,12 @@ const TechStack = () => {
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
         <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
+          <Pointer />
           {spheres.map((props, i) => (
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
-              isActive={isActive}
+              material={materials[i % materials.length]}
             />
           ))}
         </Physics>
@@ -203,8 +189,8 @@ const TechStack = () => {
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+        <EffectComposer>
+          <N8AO color="#050505" aoRadius={2} intensity={0.8} />
         </EffectComposer>
       </Canvas>
     </div>

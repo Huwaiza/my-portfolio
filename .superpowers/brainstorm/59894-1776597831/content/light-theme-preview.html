@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Theme Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Inter', system-ui, sans-serif; padding: 32px; }
+
+  h2 { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  p.sub { color: #666; font-size: 13px; margin-bottom: 32px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .preview {
+    border-radius: 4px; overflow: hidden; cursor: pointer;
+    transition: transform 0.15s; position: relative;
+  }
+  .preview:hover { transform: translateY(-2px); }
+  .preview.selected { outline: 2px solid #7b61ff; }
+  .preview-label {
+    text-align: center; padding: 10px; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700;
+  }
+
+  /* DARK */
+  .dark-preview { background: #050505; }
+  .dark-preview .mock-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; border-bottom: 1px solid #111;
+  }
+  .dark-preview .logo { color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+  .dark-preview .nav-links { display: flex; gap: 20px; }
+  .dark-preview .nav-links span { color: #444; font-size: 9px; letter-spacing: 2px; }
+  .dark-preview .toggle { color: #333; font-size: 14px; }
+  .dark-preview .hero { padding: 24px 20px 20px; border-bottom: 1px solid #0d0d0d; }
+  .dark-preview .eyebrow { color: #333; font-size: 8px; letter-spacing: 2px; margin-bottom: 8px; }
+  .dark-preview .name { color: #fff; font-size: 36px; font-weight: 900; letter-spacing: -2px; line-height: 0.95; margin-bottom: 20px; }
+  .dark-preview .meta { display: flex; gap: 20px; border-top: 1px solid #0d0d0d; padding-top: 14px; }
+  .dark-preview .meta-item .ml { color: #2a2a2a; font-size: 7px; letter-spacing: 1px; }
+  .dark-preview .meta-item .mv { color: #666; font-size: 9px; margin-top: 2px; }
+  .dark-preview .meta-item .mv.w { color: #eee; }
+  .dark-preview .section { padding: 16px 20px; border-bottom: 1px solid #0a0a0a; }
+  .dark-preview .slabel { color: #2a2a2a; font-size: 7px; letter-spacing: 2px; margin-bottom: 10px; }
+  .dark-preview .about-p { color: #555; font-size: 10px; line-height: 1.6; }
+  .dark-preview .about-p strong { color: #ccc; }
+  .dark-preview .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .dark-preview .tag { border: 1px solid #151515; color: #444; font-size: 7px; padding: 3px 8px; }
+  .dark-preview-label { background: #0a0a0a; color: #333; }
+
+  /* LIGHT */
+  .light-preview { background: #fafaf8; }
+  .light-preview .mock-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; border-bottom: 1px solid #e8e8e4;
+  }
+  .light-preview .logo { color: #0a0a0a; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+  .light-preview .nav-links { display: flex; gap: 20px; }
+  .light-preview .nav-links span { color: #aaa; font-size: 9px; letter-spacing: 2px; }
+  .light-preview .toggle { color: #bbb; font-size: 14px; }
+  .light-preview .hero { padding: 24px 20px 20px; border-bottom: 1px solid #e8e8e4; }
+  .light-preview .eyebrow { color: #bbb; font-size: 8px; letter-spacing: 2px; margin-bottom: 8px; }
+  .light-preview .name { color: #0a0a0a; font-size: 36px; font-weight: 900; letter-spacing: -2px; line-height: 0.95; margin-bottom: 20px; }
+  .light-preview .meta { display: flex; gap: 20px; border-top: 1px solid #e8e8e4; padding-top: 14px; }
+  .light-preview .meta-item .ml { color: #ccc; font-size: 7px; letter-spacing: 1px; }
+  .light-preview .meta-item .mv { color: #999; font-size: 9px; margin-top: 2px; }
+  .light-preview .meta-item .mv.w { color: #0a0a0a; }
+  .light-preview .section { padding: 16px 20px; border-bottom: 1px solid #efefeb; }
+  .light-preview .slabel { color: #ccc; font-size: 7px; letter-spacing: 2px; margin-bottom: 10px; }
+  .light-preview .about-p { color: #999; font-size: 10px; line-height: 1.6; }
+  .light-preview .about-p strong { color: #222; }
+  .light-preview .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .light-preview .tag { border: 1px solid #e0e0da; color: #aaa; font-size: 7px; padding: 3px 8px; }
+  .light-preview-label { background: #f0f0ec; color: #aaa; }
+</style>
+</head>
+<body>
+
+<h2>Dark ↔ Light theme pair</h2>
+<p class="sub">Same structure, inverted palette. Toggle button sits in top-right of navbar (☀ / ☾). Preference saved to localStorage.</p>
+
+<div class="split">
+  <!-- DARK -->
+  <div>
+    <div class="preview dark-preview">
+      <div class="mock-nav">
+        <span class="logo">HT</span>
+        <div class="nav-links">
+          <span>ABOUT</span><span>WORK</span><span>CONTACT</span>
+        </div>
+        <span class="toggle">☾</span>
+      </div>
+      <div class="hero">
+        <div class="eyebrow">SENIOR SOFTWARE ENGINEER</div>
+        <div class="name">HUWAIZA<br/>TAHIR</div>
+        <div class="meta">
+          <div class="meta-item"><div class="ml">AT</div><div class="mv w">Arbisoft</div></div>
+          <div class="meta-item"><div class="ml">SCALE</div><div class="mv">250K+ MAU</div></div>
+          <div class="meta-item"><div class="ml">EXP</div><div class="mv">5+ yrs</div></div>
+          <div class="meta-item"><div class="ml">FOCUS</div><div class="mv">Backend · AI</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="slabel">ABOUT</div>
+        <p class="about-p">I build <strong>scalable backend systems</strong> and high-traffic platforms. Currently backend lead at <strong>Arbisoft</strong>...</p>
+      </div>
+      <div class="section">
+        <div class="slabel">SKILLS</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Redis</span>
+          <span class="tag">AWS</span><span class="tag">Neo4j</span><span class="tag">LLMs</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-label dark-preview-label" style="padding:10px;text-align:center;font-size:10px;letter-spacing:2px;">DARK — #050505 base</div>
+  </div>
+
+  <!-- LIGHT -->
+  <div>
+    <div class="preview light-preview">
+      <div class="mock-nav">
+        <span class="logo">HT</span>
+        <div class="nav-links">
+          <span>ABOUT</span><span>WORK</span><span>CONTACT</span>
+        </div>
+        <span class="toggle">☀</span>
+      </div>
+      <div class="hero">
+        <div class="eyebrow">SENIOR SOFTWARE ENGINEER</div>
+        <div class="name">HUWAIZA<br/>TAHIR</div>
+        <div class="meta">
+          <div class="meta-item"><div class="ml">AT</div><div class="mv w">Arbisoft</div></div>
+          <div class="meta-item"><div class="ml">SCALE</div><div class="mv">250K+ MAU</div></div>
+          <div class="meta-item"><div class="ml">EXP</div><div class="mv">5+ yrs</div></div>
+          <div class="meta-item"><div class="ml">FOCUS</div><div class="mv">Backend · AI</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="slabel">ABOUT</div>
+        <p class="about-p">I build <strong>scalable backend systems</strong> and high-traffic platforms. Currently backend lead at <strong>Arbisoft</strong>...</p>
+      </div>
+      <div class="section">
+        <div class="slabel">SKILLS</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Redis</span>
+          <span class="tag">AWS</span><span class="tag">Neo4j</span><span class="tag">LLMs</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-label light-preview-label" style="padding:10px;text-align:center;font-size:10px;letter-spacing:2px;">LIGHT — #fafaf8 base</div>
+  </div>
+</div>
+
+</body>
+</html>

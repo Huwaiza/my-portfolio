@@ -16,5 +16,6 @@
 }
 .hover-link:hover .hover-in {
   transform: translateY(-100%);
-  color: var(--accentColor);
+  color: var(--text-primary);
+  opacity: 0.6;
 }

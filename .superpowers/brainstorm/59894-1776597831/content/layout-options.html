@@ -1,0 +1,145 @@
+<h2>How should the page be structured?</h2>
+<p class="subtitle">Minimal Dark direction — pick the layout that feels right for a senior engineer portfolio</p>
+
+<div class="cards">
+  <div class="card" data-choice="classic" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;border:1px solid #1e1e1e;padding:20px;min-height:200px;font-family:sans-serif;display:flex;gap:16px;">
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+        <!-- Nav -->
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #1e1e1e;padding-bottom:8px;">
+          <span style="color:#fff;font-size:10px;font-weight:700;">HT</span>
+          <span style="color:#444;font-size:8px;letter-spacing:2px;">ABOUT · WORK · CONTACT</span>
+        </div>
+        <!-- Hero -->
+        <div style="padding:12px 0;">
+          <div style="color:#444;font-size:7px;letter-spacing:2px;margin-bottom:4px;">SENIOR SOFTWARE ENGINEER</div>
+          <div style="color:#fff;font-size:22px;font-weight:800;line-height:1;letter-spacing:-1px;">HUWAIZA<br/>TAHIR</div>
+          <div style="color:#444;font-size:7px;margin-top:6px;">Python · Django · AWS · Redis · LLMs</div>
+        </div>
+        <!-- Divider -->
+        <div style="border-top:1px solid #1a1a1a;"></div>
+        <!-- About -->
+        <div style="padding:8px 0;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">ABOUT</div>
+          <div style="color:#666;font-size:7px;line-height:1.5;">Senior engineer, 5+ yrs, 250K MAU platforms...</div>
+        </div>
+        <!-- Career -->
+        <div style="padding:8px 0;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">CAREER</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="color:#555;font-size:7px;">2020 — Phaedra Solutions</div>
+            <div style="color:#555;font-size:7px;">2022 — SpyreSync</div>
+            <div style="color:#fff;font-size:7px;">NOW — Arbisoft</div>
+          </div>
+        </div>
+        <!-- Work -->
+        <div style="padding:8px 0;border-top:1px solid #1a1a1a;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">WORK</div>
+          <div style="display:flex;gap:4px;">
+            <div style="background:#111;border:1px solid #222;width:40px;height:28px;"></div>
+            <div style="background:#111;border:1px solid #222;width:40px;height:28px;"></div>
+            <div style="background:#111;border:1px solid #222;width:40px;height:28px;"></div>
+          </div>
+        </div>
+        <!-- Contact -->
+        <div style="border-top:1px solid #1a1a1a;padding-top:8px;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">CONTACT</div>
+          <div style="color:#555;font-size:7px;">muhammadhuwaizatahir@gmail.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Classic Single Page</h3>
+      <p>Hero → About → Career → Work → Contact. Clean top-to-bottom scroll. Every senior engineer's portfolio follows this — it's what recruiters expect.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="split" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;border:1px solid #1e1e1e;padding:20px;min-height:200px;font-family:sans-serif;display:flex;gap:0;">
+      <!-- Left fixed sidebar -->
+      <div style="width:35%;border-right:1px solid #1a1a1a;padding-right:12px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="color:#fff;font-size:10px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px;">HUWAIZA<br/>TAHIR</div>
+          <div style="color:#444;font-size:7px;letter-spacing:1px;margin-bottom:12px;">SENIOR SOFTWARE ENGINEER</div>
+          <div style="color:#555;font-size:7px;line-height:1.5;margin-bottom:12px;">Backend systems · Cloud · AI</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span style="color:#333;font-size:7px;letter-spacing:2px;">ABOUT</span>
+          <span style="color:#333;font-size:7px;letter-spacing:2px;">WORK</span>
+          <span style="color:#333;font-size:7px;letter-spacing:2px;">CONTACT</span>
+        </div>
+      </div>
+      <!-- Right scrollable content -->
+      <div style="flex:1;padding-left:12px;display:flex;flex-direction:column;gap:10px;">
+        <div style="border-bottom:1px solid #1a1a1a;padding-bottom:8px;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">CAREER</div>
+          <div style="color:#555;font-size:7px;margin-bottom:2px;">2020 — Phaedra Solutions</div>
+          <div style="color:#555;font-size:7px;margin-bottom:2px;">2022 — SpyreSync</div>
+          <div style="color:#fff;font-size:7px;">NOW — Arbisoft</div>
+        </div>
+        <div style="border-bottom:1px solid #1a1a1a;padding-bottom:8px;">
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">SKILLS</div>
+          <div style="display:flex;flex-wrap:wrap;gap:3px;">
+            <span style="background:#111;color:#555;font-size:6px;padding:2px 5px;border:1px solid #1e1e1e;">Python</span>
+            <span style="background:#111;color:#555;font-size:6px;padding:2px 5px;border:1px solid #1e1e1e;">Django</span>
+            <span style="background:#111;color:#555;font-size:6px;padding:2px 5px;border:1px solid #1e1e1e;">AWS</span>
+            <span style="background:#111;color:#555;font-size:6px;padding:2px 5px;border:1px solid #1e1e1e;">Redis</span>
+          </div>
+        </div>
+        <div>
+          <div style="color:#333;font-size:7px;letter-spacing:2px;margin-bottom:4px;">WORK</div>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div style="background:#0d0d0d;border:1px solid #1a1a1a;padding:4px 6px;display:flex;justify-content:space-between;">
+              <span style="color:#555;font-size:7px;">Trier Project</span>
+              <span style="color:#333;font-size:6px;">Neo4j · RAG</span>
+            </div>
+            <div style="background:#0d0d0d;border:1px solid #1a1a1a;padding:4px 6px;display:flex;justify-content:space-between;">
+              <span style="color:#555;font-size:7px;">Xiangqi Platform</span>
+              <span style="color:#333;font-size:6px;">Django · Redis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Split: Fixed Left + Scrollable Right</h3>
+      <p>Your name and nav stay pinned on the left. Content scrolls on the right. Distinctive, used by senior devs on read.cv and similar. Feels like a résumé come to life.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="bento" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;border:1px solid #1e1e1e;padding:20px;min-height:200px;font-family:sans-serif;">
+      <!-- Nav -->
+      <div style="display:flex;justify-content:space-between;border-bottom:1px solid #1a1a1a;padding-bottom:8px;margin-bottom:10px;">
+        <span style="color:#fff;font-size:10px;font-weight:700;">HT</span>
+        <span style="color:#444;font-size:7px;letter-spacing:2px;">WORK · ABOUT · CONTACT</span>
+      </div>
+      <!-- Bento grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:6px;">
+        <div style="grid-column:1/3;background:#111;border:1px solid #1e1e1e;padding:10px;">
+          <div style="color:#444;font-size:6px;letter-spacing:2px;margin-bottom:3px;">SENIOR SOFTWARE ENGINEER</div>
+          <div style="color:#fff;font-size:14px;font-weight:800;letter-spacing:-0.5px;line-height:1;">HUWAIZA TAHIR</div>
+        </div>
+        <div style="background:#111;border:1px solid #1e1e1e;padding:10px;display:flex;align-items:center;justify-content:center;">
+          <div style="color:#333;font-size:6px;text-align:center;line-height:1.6;">250K+<br/><span style="color:#555">MAU</span></div>
+        </div>
+        <div style="background:#111;border:1px solid #1e1e1e;padding:8px;">
+          <div style="color:#333;font-size:6px;letter-spacing:1px;margin-bottom:3px;">STACK</div>
+          <div style="color:#555;font-size:6px;line-height:1.6;">Python<br/>Django<br/>AWS</div>
+        </div>
+        <div style="background:#111;border:1px solid #1e1e1e;padding:8px;">
+          <div style="color:#333;font-size:6px;letter-spacing:1px;margin-bottom:3px;">AT</div>
+          <div style="color:#fff;font-size:7px;font-weight:700;">Arbisoft</div>
+          <div style="color:#333;font-size:6px;">2022–NOW</div>
+        </div>
+        <div style="background:#111;border:1px solid #1e1e1e;padding:8px;display:flex;align-items:center;justify-content:center;">
+          <div style="color:#222;font-size:7px;letter-spacing:1px;">PROJECTS →</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Bento Grid Hero</h3>
+      <p>Grid-based hero where your name, stats, stack, and current role each get their own card. Popular on dev portfolios right now. Modern but still clean.</p>
+    </div>
+  </div>
+</div>

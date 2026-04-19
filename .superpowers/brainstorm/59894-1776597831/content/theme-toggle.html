@@ -1,0 +1,26 @@
+<h2>How should the theme toggle work?</h2>
+<p class="subtitle">Light theme support — pick how the user switches between dark and light</p>
+
+<div class="options">
+  <div class="option" data-choice="button" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Toggle button in navbar</h3>
+      <p>A small sun/moon icon sits in the top-right of the nav. One click switches theme. Remembers preference via localStorage. Most common pattern — users know exactly where to find it.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="system" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Follows OS preference automatically</h3>
+      <p>Uses <code>prefers-color-scheme</code> media query. No button needed — dark mode users get dark, light mode users get light. Zero UI clutter. No user control though.</p>
+    </div>
+  </div>
+  <div class="option" data-choice="both" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Both — OS default + manual override</h3>
+      <p>Starts with OS preference, but user can toggle and override. Preference saved to localStorage. Best of both worlds — respects system settings but gives control.</p>
+    </div>
+  </div>
+</div>
